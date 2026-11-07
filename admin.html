@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>پنل خصوصی مدیریت | نووا کد</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px 16px;color:#f8f7ff;font-family:Vazirmatn,sans-serif;background:radial-gradient(ellipse at 10% 0,#38205c66,transparent 35%),radial-gradient(ellipse at 90% 30%,#12395255,transparent 30%),#080812}.wrap{max-width:950px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.brand{font-size:22px;font-weight:900}.brand span{color:#a78bfa}.top a{color:#d9d0ff;text-decoration:none;border:1px solid #8b5cf655;padding:9px 13px;border-radius:11px;background:#8b5cf615}.panel{background:linear-gradient(145deg,#171629,#10101d);border:1px solid #302b4b;border-radius:20px;padding:clamp(18px,4vw,30px);box-shadow:0 25px 70px #0004;margin-bottom:22px}.intro h1{font-size:clamp(27px,5vw,40px);margin:8px 0}.muted{color:#aaa8c2;line-height:1.9}.form{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:8px}.full{grid-column:1/-1}label{font-size:13px;color:#d1cde4}input,textarea{width:100%;font:inherit;color:#f8f7ff;background:#090914;border:1px solid #35314f;border-radius:11px;padding:12px;outline:none}input:focus,textarea:focus{border-color:#9b75ff;box-shadow:0 0 0 3px #8b5cf622}textarea{min-height:180px;resize:vertical;direction:ltr;text-align:left;font:13px/1.7 monospace}input[type=file]{padding:10px}small{color:#8e8ba7;line-height:1.8}.preview{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}.preview img,.preview video{max-width:220px;max-height:150px;border-radius:10px;border:1px solid #ffffff20}.btn{border:0;border-radius:11px;padding:12px 18px;font:700 14px Vazirmatn;cursor:pointer}.primary{color:white;background:linear-gradient(120deg,#7c3aed,#2563eb)}.secondary{color:#d6ccff;background:#ffffff08;border:1px solid #ffffff1c}.danger{color:#ffb4c0;background:#ff426a13;border:1px solid #ff426a40}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.status{color:#80f0c0;min-height:22px;margin-top:10px}.item{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:center;background:#ffffff05;border:1px solid #ffffff12;border-radius:14px;padding:12px;margin-top:10px}.item img,.item video{width:90px;height:65px;object-fit:cover;border-radius:9px;background:#080812}.item h3{margin:0 0 4px;font-size:15px}.item p{margin:0;color:#9693ad;font-size:12px;overflow-wrap:anywhere}.empty{color:#89869e;text-align:center;padding:25px;border:1px dashed #38334f;border-radius:13px}.hidden{display:none!important}.login{max-width:440px;margin:8vh auto}.login input{direction:ltr;text-align:left}.warn{font-size:12px;color:#f4c77b;line-height:1.8;margin-top:12px}@media(max-width:650px){.form{grid-template-columns:1fr}.full{grid-column:auto}.item{grid-template-columns:65px 1fr}.item img,.item video{width:65px;height:55px}.item .delete{grid-column:1/-1;width:100%}.top{align-items:flex-start;flex-direction:column}}
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body>
+<main class="wrap">
+<div class="top"><div class="brand">NOVA <span>CODE ✦</span></div><a href="index.html">بازگشت به سایت ↗</a></div>
+<section class="panel login" id="loginPanel"><div style="color:#a99aff;font-size:12px">PRIVATE CONTROL CENTER</div><h1>ورود مدیر</h1><p class="muted">با ایمیل و رمز حساب مدیر Supabase وارد شو.</p><form id="loginForm"><div class="field"><label for="email">ایمیل مدیر</label><input id="email" type="email" autocomplete="username" required placeholder="ایمیل حساب مدیر" dir="ltr"><label for="password">رمز عبور</label><input id="password" type="password" autocomplete="current-password" required placeholder="رمز حساب Supabase"></div><div class="buttons"><button class="btn primary" type="submit">ورود به پنل</button></div><div class="status" id="loginStatus"></div></form><p class="warn">ورود از طریق Supabase Auth انجام می‌شود. دسترسی ثبت، ویرایش و حذف توسط RLS دیتابیس کنترل می‌شود.</p></section>
+<div id="adminArea" class="hidden">
+<header class="intro"><div style="color:#a99aff;font-size:12px">CONTROL CENTER / مدیریت محتوا</div><h1>مدیریت پروژه‌ها</h1><p class="muted">عنوان، توضیحات، تصویر یا ویدیو و کد پروژه را ثبت کن. کد در سایت برای بازدیدکنندگان قابل کپی خواهد بود.</p></header>
+<section class="panel"><h2>✦ ثبت پروژه جدید</h2><form id="projectForm"><div class="form">
+<div class="field"><label for="title">عنوان پروژه *</label><input id="title" required maxlength="100" placeholder="مثلاً ربات هوشمند"></div>
+<div class="field"><label for="tag">دسته‌بندی</label><input id="tag" maxlength="60" placeholder="آردوینو، ESP32، بازی..."></div>
+<div class="field full"><label for="description">توضیحات پروژه</label><input id="description" maxlength="500" placeholder="توضیح کوتاه درباره پروژه"></div>
+<div class="field"><label for="url">لینک پروژه (اختیاری)</label><input id="url" type="url" placeholder="https://..."></div>
+<div class="field"><label for="media">تصویر یا ویدیوی پروژه</label><input id="media" type="file" accept="image/*,video/*"><small>از گالری یا فایل‌های دستگاه انتخاب کن. فایل در فضای ذخیره‌سازی آنلاین آپلود می‌شود؛ حداکثر حجم مجاز ۵۰ مگابایت است.</small><div class="preview" id="preview"></div></div>
+<div class="field full"><label for="connections">اتصال قطعات و راه‌اندازی</label><textarea id="connections" placeholder="مثلاً: VCC به 3.3V، GND به GND، SDA به GPIO21..."></textarea></div>
+<div class="field full"><label for="code">کد کامل پروژه</label><textarea id="code" spellcheck="false" placeholder="// کد پروژه را اینجا قرار بده..."></textarea><small>کد در کارت پروژه نمایش داده می‌شود و بازدیدکننده می‌تواند آن را کپی کند.</small></div>
+</div><div class="buttons"><button class="btn primary" type="submit">＋ ثبت و انتشار پروژه</button><button class="btn secondary" type="reset">پاک‌کردن فرم</button><button class="btn secondary" type="button" id="logout">خروج از پنل</button></div><div class="status" id="status" aria-live="polite"></div></form><p class="muted" style="font-size:12px">پروژه‌ها در دیتابیس آنلاین ذخیره می‌شوند و برای تمام بازدیدکنندگان قابل مشاهده‌اند.</p></section>
+<section><div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><h2>پروژه‌های ثبت‌شده</h2><span id="count" class="muted"></span></div><div id="items"></div></section>
+</div></main>
+<script>
+const SUPABASE_URL = 'https://submxfpbsnppytyjjdxb.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_1PcbKVYuAgEYJ97j60685w_kTyFtR6d';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const $ = id => document.getElementById(id);
+const BUCKET = 'novacode-media';
+let projects = [], selectedFile = null, previewURL = null, editingId = null, currentSession = null;
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function setStatus(message, isError=false){$('status').textContent=message;$('status').style.color=isError?'#ff9eae':'#80f0c0';}
+function showLogin(message=''){$('adminArea').classList.add('hidden');$('loginPanel').classList.remove('hidden');$('loginStatus').textContent=message;}
+async function verifyAdmin(session){
+  if(!session){currentSession=null;showLogin();return false;}
+  const {data,error}=await supabase.rpc('is_novacode_admin');
+  if(error || data !== true){await supabase.auth.signOut();currentSession=null;showLogin('این حساب دسترسی مدیر ندارد.');return false;}
+  currentSession=session;$('loginPanel').classList.add('hidden');$('adminArea').classList.remove('hidden');await loadProjects();return true;
+}
+$('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();const btn=e.submitter;btn.disabled=true;$('loginStatus').textContent='در حال بررسی اطلاعات ورود…';
+  try{const {data,error}=await supabase.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)throw error;const ok=await verifyAdmin(data.session);if(ok)$('loginStatus').textContent='';}
+  catch(err){$('loginStatus').textContent='ورود ناموفق: '+(err.message||'اطلاعات ورود را بررسی کن.');}
+  finally{btn.disabled=false;}
+});
+// نشست ورود هنگام بارگذاری صفحه بررسی می‌شود؛ خروج با دکمه پنل انجام می‌شود.
+$('logout').addEventListener('click',async()=>{await supabase.auth.signOut();currentSession=null;showLogin('با موفقیت خارج شدی.');});
+$('media').addEventListener('change',e=>{selectedFile=e.target.files[0]||null;$('preview').replaceChildren();if(previewURL)URL.revokeObjectURL(previewURL);previewURL=null;if(!selectedFile)return;previewURL=URL.createObjectURL(selectedFile);const el=document.createElement(selectedFile.type.startsWith('video/')?'video':'img');el.src=previewURL;if(el.tagName==='VIDEO')el.controls=true;el.alt='پیش‌نمایش';$('preview').append(el);});
+$('projectForm').addEventListener('reset',()=>{selectedFile=null;editingId=null;$('projectForm').querySelector('button[type="submit"]').textContent='＋ ثبت و انتشار پروژه';$('preview').replaceChildren();if(previewURL)URL.revokeObjectURL(previewURL);previewURL=null;});
+function extensionFor(file){const raw=(file.name.split('.').pop()||'').toLowerCase().replace(/[^a-z0-9]/g,'');if(raw)return raw;const map={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/gif':'gif','video/mp4':'mp4','video/webm':'webm'};return map[file.type]||'bin';}
+async function uploadMedia(file){if(file.size>50*1024*1024)throw Error('حجم فایل بیشتر از ۵۰ مگابایت است.');const path=`${crypto.randomUUID()}.${extensionFor(file)}`;const {error}=await supabase.storage.from(BUCKET).upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type});if(error)throw error;const {data}=supabase.storage.from(BUCKET).getPublicUrl(path);return {url:data.publicUrl,path};}
+function storagePathFromUrl(url){const marker='/storage/v1/object/public/'+BUCKET+'/';const i=(url||'').indexOf(marker);return i<0?null:decodeURIComponent(url.slice(i+marker.length));}
+async function removeMediaByUrl(url){const path=storagePathFromUrl(url);if(path){const {error}=await supabase.storage.from(BUCKET).remove([path]);if(error)console.warn('Media cleanup failed:',error.message);}}
+$('projectForm').addEventListener('submit',async e=>{
+ e.preventDefault();const btn=e.submitter;btn.disabled=true;setStatus('در حال ذخیره پروژه…');let uploadedUrl=null;
+ try{
+  if(!currentSession)throw Error('نشست ورود منقضی شده است؛ دوباره وارد شو.');
+  const payload={title:$('title').value.trim(),category:$('tag').value.trim()||'پروژه',description:$('description').value.trim(),external_url:$('url').value.trim()||null,connections:$('connections').value.trim(),code:$('code').value,is_published:true,updated_at:new Date().toISOString()};
+  if(selectedFile){const uploaded=await uploadMedia(selectedFile);uploadedUrl=uploaded.url;if(!selectedFile.type.startsWith('image/')&&!selectedFile.type.startsWith('video/'))throw Error('فرمت فایل پشتیبانی نمی‌شود.');}
+  let oldMedia=[];const wasEditing=Boolean(editingId);
+  if(editingId){const old=projects.find(p=>p.id===editingId);if(old&&uploadedUrl){if(old.image_url)oldMedia.push(old.image_url);if(old.video_url)oldMedia.push(old.video_url);payload.image_url=null;payload.video_url=null;if(selectedFile.type.startsWith('image/'))payload.image_url=uploadedUrl;else payload.video_url=uploadedUrl;}const {error}=await supabase.from('novacode_projects').update(payload).eq('id',editingId);if(error)throw error;for(const u of oldMedia)await removeMediaByUrl(u);}
+  else {if(uploadedUrl){if(selectedFile.type.startsWith('image/'))payload.image_url=uploadedUrl;else payload.video_url=uploadedUrl;}const {error}=await supabase.from('novacode_projects').insert(payload);if(error)throw error;}
+  await loadProjects();$('projectForm').reset();setStatus(wasEditing?'تغییرات پروژه ذخیره شد.':'پروژه با موفقیت در سایت منتشر شد.');editingId=null;$('projectForm').querySelector('button[type="submit"]').textContent='＋ ثبت و انتشار پروژه';
+ }catch(err){if(uploadedUrl)await removeMediaByUrl(uploadedUrl);setStatus('خطا: '+(err.message||'عملیات انجام نشد.'),true);}
+ finally{btn.disabled=false;}
+});
+async function loadProjects(){const {data,error}=await supabase.from('novacode_projects').select('*').order('created_at',{ascending:false});if(error){setStatus('خطا در دریافت پروژه‌ها: '+error.message,true);return;}projects=data||[];render();}
+function render(){$('count').textContent=projects.length+' پروژه';$('items').innerHTML=projects.length?projects.map(p=>`<article class="item">${p.video_url?`<video src="${esc(p.video_url)}" muted></video>`:p.image_url?`<img src="${esc(p.image_url)}" alt="">`:`<div class="empty">بدون تصویر</div>`}<div><h3>${esc(p.title)}</h3><p>${esc(p.category||'پروژه')} · ${p.code?'دارای کد پروژه':'بدون کد'} · ${p.is_published?'منتشرشده':'پیش‌نویس'}</p><div class="buttons"><button class="btn secondary" type="button" data-edit="${esc(p.id)}">ویرایش</button></div></div><button class="btn danger delete" type="button" data-delete="${esc(p.id)}">حذف پروژه</button></article>`).join(''):`<div class="empty">هنوز پروژه‌ای ثبت نشده است.</div>`;}
+$('items').addEventListener('click',async e=>{const edit=e.target.closest('[data-edit]');const del=e.target.closest('[data-delete]');if(edit){const p=projects.find(x=>x.id===edit.dataset.edit);if(!p)return;editingId=p.id;$('title').value=p.title||'';$('tag').value=p.category||'';$('description').value=p.description||'';$('url').value=p.external_url||'';$('connections').value=p.connections||'';$('code').value=p.code||'';$('media').value='';selectedFile=null;$('preview').replaceChildren();if(p.image_url||p.video_url){const el=document.createElement(p.video_url?'video':'img');el.src=p.video_url||p.image_url;if(el.tagName==='VIDEO')el.controls=true;$('preview').append(el);}$('projectForm').querySelector('button[type="submit"]').textContent='ذخیره تغییرات پروژه';$('projectForm').scrollIntoView({behavior:'smooth',block:'start'});setStatus('حالت ویرایش فعال است. برای حفظ رسانه فعلی، فایل جدید انتخاب نکن.');}
+ if(del){const id=del.dataset.delete;const p=projects.find(x=>x.id===id);if(!p||!confirm('این پروژه برای همه بازدیدکنندگان حذف شود؟'))return;del.disabled=true;const {error}=await supabase.from('novacode_projects').delete().eq('id',id);if(error){setStatus('خطا در حذف: '+error.message,true);del.disabled=false;return;}if(p.image_url)await removeMediaByUrl(p.image_url);if(p.video_url)await removeMediaByUrl(p.video_url);await loadProjects();setStatus('پروژه حذف شد.');}
+});
+(async()=>{const {data:{session}}=await supabase.auth.getSession();if(session)await verifyAdmin(session);})();
+</script>
+</body></html>
